@@ -29,6 +29,8 @@ Toda decisión de diseño beneficia ciertos atributos de calidad a costa de comp
 Muestra las **responsabilidades funcionales** del sistema: identifica cómo se agrupan los componentes de software en módulos lógicos y cómo cooperan entre sí para cumplir con las reglas del juego.
 
 classDiagram  
+    direction TB  
+      
     namespace Servidor\_MVC {  
         class PersonajeController  
         class CombateController  
