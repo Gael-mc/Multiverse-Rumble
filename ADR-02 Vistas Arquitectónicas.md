@@ -28,63 +28,8 @@ Toda decisión de diseño beneficia ciertos atributos de calidad a costa de comp
 
 Muestra las **responsabilidades funcionales** del sistema: identifica cómo se agrupan los componentes de software en módulos lógicos y cómo cooperan entre sí para cumplir con las reglas del juego.
 
-classDiagram  
-    direction TB  
-      
-    namespace Servidor\_MVC {  
-        class PersonajeController  
-        class CombateController  
-        class EscenarioController  
-        class JugadorController  
-        class Personaje {  
-            \+int Id  
-            \+string Nombre  
-            \+int Vida  
-        }  
-        class Habilidad {  
-            \+int Id  
-            \+string Nombre  
-            \+int Danio  
-        }  
-        class Escenario {  
-            \+int Id  
-            \+string Nombre  
-        }  
-        class Jugador {  
-            \+int Id  
-            \+string Username  
-        }  
-        class Universo {  
-            \+int Id  
-            \+string Nombre  
-        }  
-    }
+<img width="1031" height="436" alt="image" src="https://github.com/user-attachments/assets/7db58d20-a266-4185-a905-d0ad44d981ca" />
 
-    namespace Cliente\_JS {  
-        class MotorDeCombate {  
-            \+gameLoop()  
-            \+update()  
-            \+render()  
-        }  
-        class ControlesJS {  
-            \+keysPressed  
-            \+listen()  
-        }  
-        class FighterEntity {  
-            \+sprites  
-            \+hitboxes  
-            \+move()  
-        }  
-    }
-
-    PersonajeController \--\> Personaje : Consulta  
-    CombateController \--\> Personaje : Registra Historial  
-    EscenarioController \--\> Escenario : Consulta  
-    JugadorController \--\> Jugador : Administra  
-    Universo "1" \*-- "0..\*" Personaje : Clasifica  
-    Personaje "1" \*-- "0..\*" Habilidad : Posee  
-    MotorDeCombate \--\> ControlesJS : Lee eventos  
-    MotorDeCombate \--\> FighterEntity : "Actualiza/Renderiza"
 
 **Módulos del Sistema:**
 
@@ -146,26 +91,8 @@ MultiverseRumble/
 
 Muestra el **comportamiento en ejecución** del sistema durante su escenario más dinámico y crítico: el ciclo de vida completo de un combate local. Ilustra la interacción de eventos reactivos desde los periféricos de entrada hasta la persistencia final.
 
-sequenceDiagram  
-    autonumber  
-    actor J1 as "Jugador 1 (WASD \+ F/G)"  
-    actor J2 as "Jugador 2 (Flechas \+ L/K)"  
-    participant Controles as "Controles (JavaScript \- input.js)"  
-    participant Motor as "Motor de Combate (Canvas API \- game.js)"  
-    participant Servidor as "Controllers (ASP.NET Core)"  
-    participant Memoria as "Almacenamiento (Lista en Memoria)"
+<img width="746" height="593" alt="Screenshot 2026-06-05 131703" src="https://github.com/user-attachments/assets/1124c392-f7b2-4f28-9bef-a9b796dadb2d" />
 
-    J1-\>\>Controles: "Presiona teclas de ataque/movimiento"  
-    J2-\>\>Controles: "Presiona teclas de ataque/movimiento"  
-    loop Bucle de Juego (60 FPS)  
-        Motor-\>\>Controles: "Detecta matriz de entradas de teclado activas"  
-        Motor-\>\>Motor: "Actualiza posiciones vectoriales y colisiones de cajas (Hitboxes)"  
-        Motor-\>\>Motor: "Render limpia buffer y redibuja sprites en HTML5 Canvas"  
-    end  
-    Motor-\>\>Motor: "Evento Fin de Combate (Vida de un luchador llega a 0)"  
-    Motor-\>\>Servidor: "HTTP POST asíncrono (JSON con datos del ganador y estadísticas)"  
-    Servidor-\>\>Memoria: "Persiste registro en la coleccion estática global de C\#"  
-    Servidor--\>\>Motor: "HTTP 200 OK (Confirmación de guardado de partida)"
 
 **Flujo Dinámico:** Los usuarios interactúan enviando comandos asíncronos concurrentes sobre el mismo periférico. El script input.js mapea las ráfagas discretas de interrupción. El bucle de juego sincroniza a una tasa fija de 60 FPS las rutinas de físicas, colisiones de cajas de golpe (*hitboxes*) y actualización de la vista gráfica. Al gatillarse la condición de resolución de victoria, el ciclo del cliente se rompe y dispara un hilo HTTP POST asíncrono hacia el backend para consolidar el registro de la partida.
 
@@ -174,61 +101,8 @@ sequenceDiagram
 ## **4\. Vista de despliegue y física**
 
 Muestra la **distribución física, empaquetamiento y los entornos de hardware** donde residen los componentes de software, describiendo la infraestructura lógica frente a los componentes de hardware tangibles.
+<img width="688" height="508" alt="Screenshot 2026-06-05 131713" src="https://github.com/user-attachments/assets/29d2edfe-fee9-4039-a480-24c6f363e6f5" />
 
-### **Vista de Despliegue (Componentes de Software en Ejecución)**
-
-flowchart TD  
-    subgraph Dispositivo\_Cliente \["Dispositivo del Usuario"\]  
-        subgraph Navegador \["Navegador Web"\]  
-            Views\["Vistas Razor .cshtml \<br/\> Selección / Arena / Resultado"\]  
-            MotorJS\["Motor de Combate .js"\]  
-            ControlesJS\["Controles .js"\]  
-            Canvas\["HTML5 Canvas API"\]  
-        end  
-    end  
-      
-    subgraph Servidor\_Host \["Servidor de Aplicaciones"\]  
-        subgraph NetRuntime \[".NET Core Runtime"\]  
-            Kestrel\["Servidor Web Kestrel / IIS Express"\]  
-            Controllers\["MVC Controllers"\]  
-            Models\["C\# Classes / Models"\]  
-            MemDb\["Lista Estática en Memoria"\]  
-        end  
-    end
-
-    Navegador \--\>|"Peticiones HTTP / JSON"| Kestrel  
-    Kestrel \--\>|"Respuestas HTTP / JSON"| Navegador  
-    Kestrel \--\> Controllers  
-    Controllers \--\> Models  
-    Controllers \--\> MemDb  
-    MotorJS \--\> Canvas  
-    ControlesJS \--\> MotorJS
-
-### **Vista Física (Topología de Infraestructura de Hardware)**
-
-flowchart LR  
-    subgraph Nodo\_Cliente \["Computadora / Laptop de los Jugadores"\]  
-        CPU\_C\["Procesador Central CPU"\]  
-        GPU\_C\["Tarjeta Gráfica / Render Canvas"\]  
-        Periferico\["Teclado Local Compartido"\]  
-    end
-
-    subgraph Red \["Red de Comunicación"\]  
-        TCP\["Protocolo TCP / IP"\]  
-    end
-
-    subgraph Nodo\_Servidor \["Entorno Host / Localhost"\]  
-        CPU\_S\["Procesador Servidor"\]  
-        RAM\_S\["Memoria RAM \<br/\> Almacenamiento Estático Global"\]  
-    end
-
-    Periferico \--\> CPU\_C  
-    CPU\_C \--\> GPU\_C  
-    CPU\_C \--\>|"Peticiones HTTP"| TCP  
-    TCP \--\> CPU\_S  
-    CPU\_S \--\> RAM\_S  
-    CPU\_S \--\>|"Respuestas HTTP"| TCP  
-    TCP \--\> CPU\_C
 
 **Infraestructura y Hosting:** El sistema opera actualmente bajo un esquema unificado de desarrollo local (localhost). El servidor web ligero **Kestrel** aloja y compila la lógica de la solución en capas, administrando las colecciones de persistencia directamente sobre el direccionamiento volátil de su memoria **RAM**. El cliente interactúa dentro de la caja de arena del navegador del terminal consumiendo directamente recursos de la **GPU** dedicada para acelerar el renderizado del Canvas sin comprometer hilos de procesamiento de la CPU central.
 
