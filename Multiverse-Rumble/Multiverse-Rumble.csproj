@@ -7,4 +7,8 @@
     <RootNamespace>Multiverse_Rumble</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Docs\" />
+  </ItemGroup>
+
 </Project>
