@@ -102,7 +102,8 @@ en el cliente.
 
 ## Diagrama
 
-Ver archivo `diagramas/estilo-arquitectonico.drawio` en el repositorio.
+<img width="910" height="488" alt="image" src="https://github.com/user-attachments/assets/e7df6c48-5c8c-466a-b1b9-66b7dd32dbc9" />
+
 
 ---
 
