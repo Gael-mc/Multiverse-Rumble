@@ -1,0 +1,82 @@
+# ADR-002: Incorporar una API REST para el historial de partidas
+
+## Estado
+Aceptado
+
+## Contexto
+
+Multiverse Rumble es un juego de peleas 1v1 en pixel art, desarrollado con ASP.NET Core MVC,
+sin modo multijugador en línea. Hasta ahora, el resultado de cada partida (personajes
+enfrentados, ganador, rounds jugados, duración) no se persistía en ningún lado: vivía
+solo en memoria durante la ejecución de la partida y se perdía al cerrar el juego.
+
+Esto genera varios problemas:
+
+- No hay forma de consultar el historial de partidas jugadas.
+- No se pueden calcular estadísticas por personaje (win rate, partidas jugadas, etc.),
+  algo útil tanto para el jugador (ver su progreso) como para balancear el juego
+  (detectar personajes sobreusados o con win rate desproporcionado).
+- La lógica de "guardar resultado" estaba acoplada directamente a las vistas/controladores
+  MVC, lo que dificulta reutilizar esos datos desde otro cliente.
+
+## Decisión
+
+Se incorpora una **API REST** implementada con **ASP.NET Core Web API**, en un proyecto
+separado (`Multiverse-Rumble-API`) dentro de la misma solución, documentada con
+**Swagger / OpenAPI** (vía Swashbuckle), para registrar y consultar el historial de partidas.
+
+La API expone los siguientes endpoints sobre el recurso `Matches`:
+
+| Método | Ruta                          | Descripción                                  |
+|--------|-------------------------------|-----------------------------------------------|
+| GET    | /api/matches                  | Lista el historial completo de partidas       |
+| GET    | /api/matches/{id}              | Detalle de una partida específica             |
+| POST   | /api/matches                  | Registra el resultado de una partida nueva    |
+| DELETE | /api/matches/{id}              | Elimina un registro de partida                |
+| GET    | /api/matches/stats/{character} | Estadísticas (wins/losses/win rate) por personaje |
+
+Para la persistencia se usa **Entity Framework Core con SQLite**: no requiere instalar ni
+levantar un servidor de base de datos aparte, el archivo `.db` vive junto al proyecto, y es
+suficiente para el alcance de un proyecto individual sin multijugador.
+
+## Alternativas consideradas
+
+1. **Seguir usando solo MVC, sin API separada.**
+   Descartado porque mezcla la lógica de presentación con la de persistencia de datos,
+   y no permite que ningún otro cliente consuma esos datos sin pasar por una vista completa.
+
+2. **GraphQL.**
+   Descartado por sobreingeniería: el modelo de datos es simple (un solo recurso, `Match`),
+   no hay problema de over-fetching/under-fetching que lo justifique, y agrega curva de
+   aprendizaje y dependencias extra sin beneficio real para un proyecto de este tamaño.
+
+3. **gRPC.**
+   Descartado porque está pensado para comunicación eficiente entre servicios
+   (server-to-server), no para un caso simple de CRUD consumido desde un navegador o
+   cliente HTTP estándar. Tampoco tiene un estándar de documentación tan extendido como
+   Swagger para este tipo de proyecto.
+
+4. **REST con ASP.NET Core Web API (elegido).**
+   Es el estándar de facto de la industria para este tipo de recurso simple tipo CRUD.
+   Convive en la misma solución que el proyecto MVC existente. Swagger/OpenAPI da
+   documentación automática e interactiva. Es stateless, basado en HTTP estándar, y fácil
+   de probar sin infraestructura adicional.
+
+## Consecuencias
+
+**Positivas**
+- El historial de partidas queda persistido y consultable de forma independiente de las vistas.
+- Swagger documenta automáticamente los endpoints, facilitando entender cómo consumir la API.
+- Sienta la base para futuras features (ranking global, pantalla de estadísticas, exportar
+  historial) sin rediseñar la capa de datos.
+
+**Negativas / trade-offs**
+- Se agrega una dependencia nueva (EF Core + SQLite + Swashbuckle).
+- Hay que mantener migraciones de base de datos a partir de ahora.
+- No hay autenticación; aceptable para el alcance actual (sin red), pero sería deuda técnica
+  si se expusiera públicamente.
+- Al ser dos proyectos separados (MVC y API), hay que correr ambos por separado en desarrollo.
+
+## Referencias
+- https://learn.microsoft.com/aspnet/core/web-api
+- https://github.com/domaindrivendev/Swashbuckle.AspNetCore
