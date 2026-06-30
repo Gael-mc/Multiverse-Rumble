@@ -1,0 +1,29 @@
+﻿@model List<MultiverseRumble.Models.Escenario>
+@{
+    ViewData["Title"] = "Escenarios";
+    Layout = null; // Esto evita que use el Layout predeterminado que te está ocultando el contenido
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/css/site-arcade.css" />
+</head>
+<body class="mr-body">
+    <h1 class="mr-title">ESCENARIOS</h1>
+
+    <div class="mr-stage-strip" style="display: flex; flex-wrap: wrap; justify-content: center;">
+        @foreach (var e in Model)
+        {
+            <div class="mr-stage-card" style="margin: 10px;">
+                <div class="mr-stage-thumb" style="width: 200px; height: 120px; background-image: url('/img/@e.ImagenUrl'); background-size: cover;"></div>
+                <div class="mr-card-name">@e.Nombre</div>
+                <div class="mr-card-sub">@e.Universo</div>
+            </div>
+        }
+    </div>
+
+    <a href="@Url.Action("Index", "Home")">Volver al menú</a>
+</body>
+</html>

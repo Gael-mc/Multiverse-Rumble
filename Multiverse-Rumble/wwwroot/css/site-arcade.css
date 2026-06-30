@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap');
+
+:root {
+    --mr-bg: #0b0e23;
+    --mr-bg2: #161a3a;
+    --mr-neon-blue: #00e5ff;
+    --mr-neon-pink: #ff2bd6;
+    --mr-neon-yellow: #ffd400;
+    --mr-text: #eaf6ff;
+    --mr-border: 4px;
+}
+
+body.mr-body {
+    background: radial-gradient(circle at top, #1a1f4a 0%, #05060f 70%);
+    color: var(--mr-text);
+    font-family: 'Russo One', sans-serif;
+    min-height: 100vh;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+    body.mr-body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient( to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 2px, transparent 4px );
+        z-index: 1;
+    }
+
+.mr-title {
+    font-family: 'Press Start 2P', monospace;
+    text-align: center;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: var(--mr-neon-yellow);
+    text-shadow: 0 0 6px var(--mr-neon-yellow), 0 0 14px var(--mr-neon-pink), 4px 4px 0 #000;
+    margin: 2.5rem 0 0.5rem 0;
+    animation: mr-flicker 3.5s infinite;
+}
+
+.mr-subtitle {
+    text-align: center;
+    color: var(--mr-neon-blue);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+}
+
+@keyframes mr-flicker {
+    0%, 19%, 21%, 23%, 80%, 100% {
+        opacity: 1;
+    }
+
+    20%, 22% {
+        opacity: 0.6;
+    }
+}
+
+.mr-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.mr-btn {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.85rem;
+    color: var(--mr-text);
+    background: linear-gradient(180deg, var(--mr-bg2), #0b0e23);
+    border: var(--mr-border) solid var(--mr-neon-blue);
+    box-shadow: 0 0 0 2px #000 inset, 0 0 14px rgba(0,229,255,0.45);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+    .mr-btn:hover {
+        color: #0b0e23;
+        background: var(--mr-neon-yellow);
+        border-color: var(--mr-neon-yellow);
+        box-shadow: 0 0 0 2px #000 inset, 0 0 24px var(--mr-neon-yellow);
+        transform: translateY(-3px) scale(1.02);
+    }
+
+    .mr-btn.mr-btn-primary {
+        border-color: var(--mr-neon-pink);
+        box-shadow: 0 0 0 2px #000 inset, 0 0 18px rgba(255,43,214,0.6);
+    }
+
+        .mr-btn.mr-btn-primary:hover {
+            background: var(--mr-neon-pink);
+            border-color: var(--mr-neon-pink);
+            box-shadow: 0 0 0 2px #000 inset, 0 0 26px var(--mr-neon-pink);
+        }
+
+.mr-section-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    color: var(--mr-neon-blue);
+    text-shadow: 0 0 8px var(--mr-neon-blue);
+    margin: 2rem 0 1rem 0;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.mr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.mr-card {
+    background: var(--mr-bg2);
+    border: 3px solid #2a2f5c;
+    border-radius: 8px;
+    padding: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    user-select: none;
+}
+
+    .mr-card:hover {
+        border-color: var(--mr-neon-blue);
+        box-shadow: 0 0 18px rgba(0,229,255,0.5);
+        transform: translateY(-4px);
+    }
+
+    .mr-card.selected {
+        border-color: var(--mr-neon-yellow);
+        box-shadow: 0 0 22px var(--mr-neon-yellow);
+        background: #1f2350;
+    }
+
+.mr-card-avatar {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.8rem;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+    image-rendering: pixelated;
+    object-fit: cover;
+    border: 2px solid #000;
+}
+
+.mr-card-name {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.mr-card-sub {
+    font-size: 0.7rem;
+    color: #9aa6d8;
+    margin-top: 2px;
+}
+
+.mr-stat-bar {
+    height: 6px;
+    background: #0b0e23;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+    border: 1px solid #000;
+}
+
+.mr-stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mr-neon-blue), var(--mr-neon-pink));
+}
+
+.mr-vs-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem auto;
+    flex-wrap: wrap;
+}
+
+.mr-vs-slot {
+    width: 160px;
+    height: 160px;
+    border: 3px dashed #3a3f72;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    color: #6b75b5;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+    .mr-vs-slot.filled {
+        border-style: solid;
+        border-color: var(--mr-neon-yellow);
+        color: var(--mr-text);
+    }
+
+.mr-vs-text {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.6rem;
+    color: var(--mr-neon-pink);
+    text-shadow: 0 0 10px var(--mr-neon-pink);
+}
+
+.mr-stage-strip {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+.mr-stage-card {
+    min-width: 180px;
+    background: var(--mr-bg2);
+    border: 3px solid #2a2f5c;
+    border-radius: 8px;
+    padding: 0.7rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+    .mr-stage-card.selected {
+        border-color: var(--mr-neon-blue);
+        box-shadow: 0 0 16px rgba(0,229,255,0.5);
+    }
+
+.mr-stage-thumb {
+    width: 100%;
+    height: 90px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #2a2f5c, #0b0e23);
+    margin-bottom: 0.5rem;
+    border: 2px solid #000;
+}
+
+.mr-fight-btn {
+    display: block;
+    margin: 2rem auto;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.1rem;
+    padding: 1rem 3rem;
+    background: var(--mr-neon-pink);
+    color: #0b0e23;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 24px var(--mr-neon-pink);
+    cursor: pointer;
+    transition: transform 0.12s ease;
+}
+
+    .mr-fight-btn:disabled {
+        background: #3a3f72;
+        box-shadow: none;
+        color: #777;
+        cursor: not-allowed;
+    }
+
+    .mr-fight-btn:not(:disabled):hover {
+        transform: scale(1.06);
+    }
+
+.mr-table-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+table.mr-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+    table.mr-table thead th {
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.65rem;
+        color: var(--mr-neon-yellow);
+        padding: 0.6rem;
+        text-align: left;
+    }
+
+    table.mr-table tbody tr {
+        background: var(--mr-bg2);
+    }
+
+    table.mr-table tbody td {
+        padding: 0.8rem 0.6rem;
+        border-top: 2px solid #2a2f5c;
+        border-bottom: 2px solid #2a2f5c;
+    }
+
+    table.mr-table tbody tr td:first-child {
+        border-left: 2px solid #2a2f5c;
+        border-radius: 6px 0 0 6px;
+    }
+
+    table.mr-table tbody tr td:last-child {
+        border-right: 2px solid #2a2f5c;
+        border-radius: 0 6px 6px 0;
+    }
+
+.mr-winner-tag {
+    color: var(--mr-neon-yellow);
+    font-weight: bold;
+}
+
+.mr-back-link {
+    display: inline-block;
+    margin: 1.5rem auto;
+    text-align: center;
+    width: 100%;
+    color: var(--mr-neon-blue);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+    .mr-back-link:hover {
+        color: var(--mr-neon-yellow);
+    }

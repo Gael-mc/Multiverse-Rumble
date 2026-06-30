@@ -1,0 +1,58 @@
+﻿@using MultiverseRumble.Models
+@model List<Personaje>
+@{
+    ViewData["Title"] = "Personajes";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personajes - Multiverse Rumble</title>
+    <link rel="stylesheet" href="~/css/site-arcade.css" />
+</head>
+<body class="mr-body">
+    <h1 class="mr-title" style="font-size:1.6rem;">PERSONAJES</h1>
+    <p class="mr-subtitle">EL ROSTER COMPLETO</p>
+
+    <div class="mr-grid">
+        @foreach (var p in Model)
+        {
+            <a href="@Url.Action("Detalle", "Personaje", new { id = p.Id })" style="text-decoration:none; color:inherit;">
+                <div class="mr-card">
+
+                    @if (!string.IsNullOrEmpty(p.ImagenUrl))
+                    {
+                        @* Usamos la ruta directa sumada a '/img/' para evitar conflictos *@
+                        <div class="mr-card-avatar" style="background-image: url('/img/@p.ImagenUrl'); background-size: cover; background-position: center;"></div>
+                    }
+                    else
+                    {
+                        <div class="mr-card-avatar" style="background-color: @AvatarColor(p.Nombre);">
+                            @p.Nombre.Substring(0, 1)
+                        </div>
+                    }
+
+                    <div class="mr-card-name">@p.Nombre</div>
+                    <div class="mr-card-sub">@p.Universo &middot; @p.Franquicia</div>
+                    <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Ataque * 5)%"></div></div>
+                    <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Defensa * 5)%"></div></div>
+                    <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Velocidad * 5)%"></div></div>
+                </div>
+            </a>
+        }
+    </div>
+
+    <a class="mr-back-link" href="@Url.Action("Index", "Home")">&lt; volver al menú</a>
+</body>
+</html>
+
+@functions {
+    string AvatarColor(string nombre)
+    {
+        var colores = new[] { "#ff2bd6", "#00e5ff", "#ffd400", "#4caf50", "#ff7043", "#9c27b0" };
+        int hash = Math.Abs(nombre.GetHashCode());
+        return colores[hash % colores.Length];
+    }
+}

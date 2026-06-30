@@ -1,0 +1,54 @@
+﻿@using MultiverseRumble.Models
+@model List<Combate>
+@{
+    ViewData["Title"] = "Historial";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Historial - Multiverse Rumble</title>
+    <link rel="stylesheet" href="~/css/site-arcade.css" />
+</head>
+<body class="mr-body">
+    <h1 class="mr-title" style="font-size:1.6rem;">HISTORIAL</h1>
+    <p class="mr-subtitle">REGISTRO DE COMBATES</p>
+
+    <div class="mr-table-wrap">
+        @if (Model == null || Model.Count == 0)
+        {
+            <p style="text-align:center; color:#9aa6d8;">Todavía no hay combates registrados. ¡Ve a pelear!</p>
+        }
+        else
+        {
+            <table class="mr-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Jugador 1</th>
+                        <th>Jugador 2</th>
+                        <th>Ganador</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.Id</td>
+                            <td>#@c.Jugador1Id</td>
+                            <td>#@c.Jugador2Id</td>
+                            <td class="mr-winner-tag">🏆 @c.Ganador</td>
+                            <td>@c.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <a class="mr-back-link" href="@Url.Action("Index", "Home")">&lt; volver al menú</a>
+</body>
+</html>

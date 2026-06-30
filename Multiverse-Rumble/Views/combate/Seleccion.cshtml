@@ -1,0 +1,138 @@
+﻿@using MultiverseRumble.Models
+@{
+    ViewData["Title"] = "Selección de Combate";
+    Layout = null;
+    var personajes = ViewBag.Personajes as List<Personaje> ?? new List<Personaje>();
+    var escenarios = ViewBag.Escenarios as List<Escenario> ?? new List<Escenario>();
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Selección - Multiverse Rumble</title>
+    <link rel="stylesheet" href="~/css/site-arcade.css" />
+</head>
+<body class="mr-body">
+    <h1 class="mr-title" style="font-size:1.6rem;">SELECCIÓN</h1>
+    <p class="mr-subtitle">ELIGE 2 LUCHADORES Y UN ESCENARIO</p>
+
+    <div class="mr-vs-wrap">
+        <div class="mr-vs-slot" id="slotP1">JUGADOR 1<br />(WASD)</div>
+        <div class="mr-vs-text">VS</div>
+        <div class="mr-vs-slot" id="slotP2">JUGADOR 2<br />(FLECHAS)</div>
+    </div>
+
+    <h2 class="mr-section-title">PERSONAJES</h2>
+    <div class="mr-grid" id="characterGrid">
+        @foreach (var p in personajes)
+        {
+            // El error RZ1010 se solucionó quitando el @{ ... } aquí
+            bool tieneImagen = !string.IsNullOrEmpty(p.ImagenUrl);
+
+            <div class="mr-card" data-id="@p.Id" data-nombre="@p.Nombre" data-universo="@p.Universo" onclick="selectCharacter(this)">
+
+                <div class="mr-card-avatar"
+                     style="@(tieneImagen ? $"background-image:url('{p.ImagenUrl}'); background-size: cover; background-position: center;" : $"background:{AvatarColor(p.Nombre)};")">
+                    @if (!tieneImagen)
+                    {
+                        @p.Nombre.Substring(0, 1)
+                    }
+                </div>
+
+                <div class="mr-card-name">
+                    @p.Nombre
+                    <a href="@Url.Action("Detalle", "Personaje", new { id = p.Id })" onclick="event.stopPropagation();" style="text-decoration:none; color:inherit; margin-left: 5px; font-size: 0.8em;" title="Ver detalles">
+                        🔗
+                    </a>
+                </div>
+
+                <div class="mr-card-sub">@p.Universo &middot; @p.Franquicia</div>
+
+                <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Ataque * 5)%"></div></div>
+                <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Defensa * 5)%"></div></div>
+                <div class="mr-stat-bar"><div class="mr-stat-fill" style="width:@(p.Velocidad * 5)%"></div></div>
+            </div>
+        }
+    </div>
+
+    <h2 class="mr-section-title">ESCENARIO</h2>
+    <div class="mr-stage-strip" id="stageStrip">
+        @foreach (var e in escenarios)
+        {
+            <div class="mr-stage-card" data-id="@e.Id" data-nombre="@e.Nombre" onclick="selectStage(this)">
+                <div class="mr-stage-thumb"></div>
+                <div class="mr-card-name" style="font-size:.85rem;">@e.Nombre</div>
+                <div class="mr-card-sub">@e.Universo</div>
+            </div>
+        }
+    </div>
+
+    <form id="fightForm" method="get" action="@Url.Action("Arena", "Combate")">
+        <input type="hidden" name="p1Id" id="p1Id" />
+        <input type="hidden" name="p2Id" id="p2Id" />
+        <input type="hidden" name="escenarioId" id="escenarioId" />
+        <button type="submit" class="mr-fight-btn" id="fightBtn" disabled>¡PELEAR!</button>
+    </form>
+
+    <a class="mr-back-link" href="@Url.Action("Index", "Home")">&lt; volver al menú</a>
+
+    <script>
+            let p1 = null, p2 = null, stage = null;
+
+            function selectCharacter(card) {
+                const id = card.dataset.id;
+                const nombre = card.dataset.nombre;
+
+                if (p1 && p1.id === id) { p1 = null; card.classList.remove('selected'); updateSlots(); return; }
+                if (p2 && p2.id === id) { p2 = null; card.classList.remove('selected'); updateSlots(); return; }
+
+                if (!p1) {
+                    p1 = { id, nombre };
+                } else if (!p2) {
+                    p2 = { id, nombre };
+                } else {
+                    return;
+                }
+                card.classList.add('selected');
+                updateSlots();
+            }
+
+            function selectStage(card) {
+                document.querySelectorAll('.mr-stage-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                stage = { id: card.dataset.id, nombre: card.dataset.nombre };
+                checkReady();
+            }
+
+            function updateSlots() {
+                const s1 = document.getElementById('slotP1');
+                const s2 = document.getElementById('slotP2');
+                if (p1) { s1.textContent = p1.nombre; s1.classList.add('filled'); }
+                else { s1.textContent = 'JUGADOR 1 (WASD)'; s1.classList.remove('filled'); }
+                if (p2) { s2.textContent = p2.nombre; s2.classList.add('filled'); }
+                else { s2.textContent = 'JUGADOR 2 (FLECHAS)'; s2.classList.remove('filled'); }
+                checkReady();
+            }
+
+            function checkReady() {
+                const btn = document.getElementById('fightBtn');
+                btn.disabled = !(p1 && p2 && stage);
+                if (!btn.disabled) {
+                    document.getElementById('p1Id').value = p1.id;
+                    document.getElementById('p2Id').value = p2.id;
+                    document.getElementById('escenarioId').value = stage.id;
+                }
+            }
+    </script>
+</body>
+</html>
+
+@functions {
+    string AvatarColor(string nombre)
+    {
+        var colores = new[] { "#ff2bd6", "#00e5ff", "#ffd400", "#4caf50", "#ff7043", "#9c27b0" };
+        int hash = Math.Abs(nombre.GetHashCode());
+        return colores[hash % colores.Length];
+    }
+}

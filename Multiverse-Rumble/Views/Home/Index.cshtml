@@ -1,8 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Multiverse Rumble";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multiverse Rumble</title>
+    <link rel="stylesheet" href="~/css/site-arcade.css" />
+</head>
+<body class="mr-body">
+    <h1 class="mr-title">MULTIVERSE<br />RUMBLE</h1>
+    <p class="mr-subtitle">&gt;&gt; ELIGE TU REALIDAD &lt;&lt;</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <nav class="mr-menu">
+        <a class="mr-btn mr-btn-primary" href="@Url.Action("Seleccion", "Combate")">⚔ JUGAR</a>
+        <a class="mr-btn" href="@Url.Action("Index", "Personaje")">🥋 PERSONAJES</a>
+        <a class="mr-btn" href="@Url.Action("Index", "Escenario")">🌍 ESCENARIOS</a>
+        <a class="mr-btn" href="@Url.Action("Historial", "Combate")">📜 HISTORIAL</a>
+    </nav>
+
+    <p class="mr-back-link" style="opacity:.5; font-size:.7rem;">Proyecto académico — Multiverse Rumble 2026</p>
+</body>
+</html>

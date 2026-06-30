@@ -1,0 +1,370 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\nuevos proyectos\\Multiverse-Rumble\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\escenario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\escenario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\controllers\\escenariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\controllers\\escenariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\models\\escenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\models\\escenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\combate\\seleccion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\combate\\seleccion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\controllers\\combatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\controllers\\combatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\escenario\\escenario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\escenario\\escenario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\personaje\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\personaje\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\controllers\\personajecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\controllers\\personajecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\wwwroot\\css\\site-arcade.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\wwwroot\\css\\site-arcade.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\views\\combate\\historial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\views\\combate\\historial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16FD6C5A-7DFD-8559-754A-94E5DA08F022}|Multiverse-Rumble\\Multiverse-Rumble.csproj|solutionrelative:multiverse-rumble\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\controllers\\matchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\controllers\\matchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\dtos\\matchdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\dtos\\matchdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\models\\matchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\models\\matchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|c:\\nuevos proyectos\\multiverse-rumble\\multiverse-rumble-api\\multiverse-rumble-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{752CB4E4-3A00-45BF-9180-584814795923}|Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj|solutionrelative:multiverse-rumble-api\\multiverse-rumble-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CombateController.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\CombateController.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Controllers\\CombateController.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\CombateController.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Controllers\\CombateController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T05:29:11.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EscenarioController.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\EscenarioController.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Controllers\\EscenarioController.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\EscenarioController.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Controllers\\EscenarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T09:02:21.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Seleccion.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\combate\\Seleccion.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\combate\\Seleccion.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\combate\\Seleccion.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\combate\\Seleccion.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAHwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T07:19:36.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Escenario\\Index.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\Escenario\\Index.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Escenario\\Index.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\Escenario\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T09:01:35.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Escenario.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Models\\Escenario.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Models\\Escenario.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Models\\Escenario.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Models\\Escenario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T09:16:08.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Personaje\\Index.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\Personaje\\Index.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Personaje\\Index.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\Personaje\\Index.cshtml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwDkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T07:31:09.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Escenario.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Escenario\\Escenario.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\Escenario\\Escenario.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Escenario\\Escenario.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\Escenario\\Escenario.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T07:37:54.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PersonajeController.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\PersonajeController.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Controllers\\PersonajeController.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\PersonajeController.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Controllers\\PersonajeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAB9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T07:49:25.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T07:14:46.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Program.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Program.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Program.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:26:33.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Historial.cshtml",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\combate\\Historial.cshtml",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Views\\combate\\Historial.cshtml",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Views\\combate\\Historial.cshtml",
+              "RelativeToolTip": "Multiverse-Rumble\\Views\\combate\\Historial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-30T07:20:14.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "site-arcade.css",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\wwwroot\\css\\site-arcade.css",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\wwwroot\\css\\site-arcade.css",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\wwwroot\\css\\site-arcade.css",
+              "RelativeToolTip": "Multiverse-Rumble\\wwwroot\\css\\site-arcade.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-06-30T07:14:01.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T07:12:06.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Multiverse-Rumble\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-30T07:11:18.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\appsettings.json",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\appsettings.json",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\appsettings.json",
+              "RelativeToolTip": "Multiverse-Rumble-API\\appsettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-20T03:46:42.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Program.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\Program.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Program.cs",
+              "RelativeToolTip": "Multiverse-Rumble-API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:35:51.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MatchResult.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Models\\MatchResult.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\Models\\MatchResult.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Models\\MatchResult.cs",
+              "RelativeToolTip": "Multiverse-Rumble-API\\Models\\MatchResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:22:30.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MatchDtos.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\DTOS\\MatchDtos.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\DTOS\\MatchDtos.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\DTOS\\MatchDtos.cs",
+              "RelativeToolTip": "Multiverse-Rumble-API\\DTOS\\MatchDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:23:30.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Multiverse-Rumble-API\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:24:31.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MatchesController.cs",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Controllers\\MatchesController.cs",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\Controllers\\MatchesController.cs",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Controllers\\MatchesController.cs",
+              "RelativeToolTip": "Multiverse-Rumble-API\\Controllers\\MatchesController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAmwH8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T03:25:15.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Multiverse-Rumble-API.csproj",
+              "DocumentMoniker": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj",
+              "RelativeDocumentMoniker": "Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj",
+              "ToolTip": "C:\\nuevos proyectos\\Multiverse-Rumble\\Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj",
+              "RelativeToolTip": "Multiverse-Rumble-API\\Multiverse-Rumble-API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-20T03:29:45.303Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
