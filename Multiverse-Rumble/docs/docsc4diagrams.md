@@ -20,3 +20,26 @@ graph TD
 
     Jugador -->|Elige personajes, escenarios\ny consulta resultados de combate| MR
 ```
+
+
+
+## Nivel 2 — Contenedores
+
+**¿Para quién es este diagrama?** Para desarrolladores o arquitectos que necesitan entender las piezas técnicas grandes del sistema y cómo se comunican, sin ver el código interno de cada una.
+
+**¿Qué pregunta responde?** *¿Cuáles son las piezas técnicas principales de Multiverse-Rumble y cómo interactúan?*
+
+```mermaid
+graph TD
+    Jugador([Jugador\nNavegador web])
+
+    subgraph "Multiverse-Rumble - Sistema"
+        Web[Multiverse-Rumble\nASP.NET Core MVC\nControllers + Views]
+        Api[Multiverse-Rumble-API\nASP.NET Core Web API\nControllers + DTOs]
+        DB[(SQLite\nmultiverserumble.db)]
+    end
+
+    Jugador -->|HTTP/HTTPS| Web
+    Web -->|HTTP/JSON| Api
+    Api -->|Lee/Escribe| DB
+```
