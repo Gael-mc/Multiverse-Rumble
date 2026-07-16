@@ -1,0 +1,61 @@
+﻿# ADR-XX — Deuda técnica 2: Modelos de dominio duplicados entre la web y la API
+
+> Tipo de deuda: **Accidental** (código duplicado / acoplamiento por copia)
+> Estado: Identificada — pendiente de pagar
+> Fecha: 2026-07-15
+> Proyecto: Multiverse-Rumble
+
+## Contexto
+
+La solución tiene dos proyectos: `Multiverse-Rumble` (web MVC) y
+`Multiverse-Rumble-API` (API REST). Ambos definen su propia carpeta `Models`
+con las mismas entidades del dominio (`Personaje`, `Combate`, `Escenario`,
+`Jugador`, etc.). **[VERIFICA]** Las clases están duplicadas: existen dos
+versiones de `Personaje.cs`, una en cada proyecto, mantenidas a mano por
+separado.
+
+## Qué es
+
+La misma información del dominio está representada dos veces en el código.
+Cuando la web consume la API, cada proyecto deserializa/serializa contra su
+propia copia del modelo. No hay una fuente única de verdad para la forma de
+los datos: la "verdad" es que las dos copias se parezcan… mientras alguien se
+acuerde de mantenerlas iguales.
+
+## Por qué existe
+
+Deuda accidental: el proyecto creció en dos partes (primero la web, luego la
+API en la rama `feature/api-rest-historial-partidas`) y lo más rápido en el
+momento fue copiar los modelos existentes al nuevo proyecto en lugar de
+extraer una librería compartida o definir contratos (DTOs) formales.
+**[VERIFICA / ajusta con tu historia real]**
+
+## Costo de no pagarla
+
+- **Cada cambio de modelo se hace dos veces:** agregar una propiedad a
+  `Personaje` (por ejemplo, `NivelPoder`) exige editar dos archivos en dos
+  proyectos; si se olvida uno, el error no aparece al compilar.
+- **Errores silenciosos de deserialización:** si las copias divergen (nombre o
+  tipo de una propiedad distinto), el JSON de la API se deserializa en la web
+  con valores nulos o por defecto, sin lanzar excepción — el bug aparece lejos
+  de su causa y es difícil de rastrear.
+- **El costo crece con el proyecto:** hoy son ~6 entidades; cada entidad nueva
+  duplica el problema.
+
+## Propuesta de solución
+
+Aplicar **Extract Class a nivel de solución**: extraer los modelos compartidos
+a un tercer proyecto de librería de clases (por ejemplo,
+`Multiverse-Rumble.Shared` o `.Contracts`) referenciado por la web y por la
+API. Pasos:
+
+1. Crear el proyecto `Multiverse-Rumble.Shared` (Class Library).
+2. Mover ahí los DTOs/contratos que viajan entre la web y la API.
+3. Referenciar la librería desde ambos proyectos y borrar las copias
+   duplicadas.
+4. Compilar y verificar que el comportamiento observable no cambia
+   (refactorización, no reescritura — Semana 11).
+
+Alternativa mínima si no se quiere un tercer proyecto todavía: conservar los
+modelos solo en la API y que la web consuma únicamente DTOs definidos en la
+carpeta `DTOs` de la API, documentando el contrato.

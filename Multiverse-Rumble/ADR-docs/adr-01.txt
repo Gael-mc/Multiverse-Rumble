@@ -1,0 +1,61 @@
+﻿# ADR-XX — Deuda técnica 1: Base de datos SQLite dentro del repositorio y ruta definida en código
+
+> Tipo de deuda: **De infraestructura / configuración** (deliberada)
+> Estado: Identificada — pendiente de pagar
+> Fecha: 2026-07-15
+> Proyecto: Multiverse-Rumble
+
+## Contexto
+
+El proyecto `Multiverse-Rumble-API` persiste sus datos en SQLite. Los archivos
+`multiverserumble.db`, `multiverserumble.db-shm` y `multiverserumble.db-wal`
+viven dentro de la carpeta del proyecto y están versionados en el repositorio
+de Git. **[VERIFICA]** La cadena de conexión apunta a una ruta relativa dentro
+del proyecto y está definida en `appsettings.json` / en código, sin variar por
+entorno (desarrollo vs. producción).
+
+## Qué es
+
+La base de datos (el archivo con los datos) forma parte del código fuente:
+viaja en cada commit, cada push y cada clone. Además, los archivos `-shm` y
+`-wal` son archivos temporales del modo WAL de SQLite que cambian en cada
+ejecución, por lo que el repositorio registra "cambios" aunque no se haya
+tocado el código.
+
+## Por qué existe
+
+Decisión deliberada para avanzar rápido durante el desarrollo: usar SQLite con
+el archivo junto al proyecto no requiere instalar ni configurar un servidor de
+base de datos, y permite que la aplicación funcione inmediatamente al clonar
+el repositorio. **[VERIFICA / ajusta con tu razón real]**
+
+## Costo de no pagarla
+
+- **Conflictos de Git inevitables:** al ser archivos binarios, cualquier
+  trabajo en paralelo (o en dos computadoras) genera conflictos que Git no
+  puede fusionar; se pierde el trabajo de alguien.
+- **Datos de prueba contaminan el historial:** cada commit puede arrastrar
+  datos basura; el repositorio crece sin control porque los binarios no se
+  comprimen bien en Git.
+- **Sin separación por entorno:** desarrollo y "producción" comparten el mismo
+  archivo; no hay forma de desplegar la API sin llevarse los datos de prueba.
+- **Riesgo de datos sensibles:** si en algún momento se registran datos reales
+  de jugadores, quedan expuestos en el historial del repositorio para siempre.
+
+## Propuesta de solución
+
+1. Agregar `*.db`, `*.db-shm` y `*.db-wal` al `.gitignore` y sacar los
+   archivos del control de versiones (`git rm --cached`).
+2. Mover la ruta de la base de datos a configuración: cadena de conexión en
+   `appsettings.Development.json` para desarrollo y variable de entorno para
+   despliegue (patrón visto en clase: la configuración vive en un lugar
+   central, no escrita a mano en el servidor).
+3. Generar la base desde migraciones de EF Core (`dotnet ef database update`)
+   o con un seeder al arrancar, para que cualquiera que clone el repositorio
+   pueda recrearla sin necesitar el archivo binario. **[VERIFICA: si no usas
+   EF Core, ajusta este punto a tu mecanismo real]**
+
+**Técnica de refactorización relacionada:** no aplica una técnica de código
+(Extract Method/Class); es deuda de infraestructura y se paga con gestión de
+configuración, exactamente el caso de la fila "De infraestructura" vista en
+clase (Semana 11).
