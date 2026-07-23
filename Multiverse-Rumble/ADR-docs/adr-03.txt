@@ -1,0 +1,87 @@
+# ADR-03 — Pruebas unitarias con xUnit y pipeline de Integración Continua
+
+> Estado: Aceptado
+> Fecha: 2026-07-22
+> Proyecto: Multiverse-Rumble
+
+## Contexto
+
+Multiverse-Rumble usa listas estáticas en memoria dentro de cada controlador
+(`_personajes` en `PersonajeController`, `_escenarios` en `EscenarioController`,
+`_personajes`/`_escenarios`/`_historial` en `CombateController`) como fuente de
+datos, según la decisión de arquitectura de ADR-03 (Capas + Cliente-Servidor).
+Esa lógica —buscar por Id, agregar, eliminar, redirigir cuando algo no
+existe— vive directamente en los controladores y hasta ahora solo se había
+verificado abriendo la aplicación y probando cada caso a mano.
+
+Esa verificación manual no queda registrada en ningún lado y no se repite
+automáticamente cuando se modifica un controlador, por lo que una regresión
+(por ejemplo, que `Detalle` deje de regresar `NotFound` con un Id inválido)
+podría pasar desapercibida hasta que la note un usuario.
+
+## Decisión
+
+### Framework de pruebas
+
+Se agrega el proyecto **Multiverse-Rumble.Tests** con **xUnit**, usando el
+patrón **Arrange-Act-Assert** y el atributo `[Fact]`.
+
+### Qué se prueba y por qué esas clases
+
+Se eligieron tres controladores, por ser donde vive la única lógica de
+negocio real del proyecto (los `Models` son solo POCOs sin comportamiento):
+
+- **`PersonajeController`** — `Detalle` (caso existente e inexistente/`NotFound`),
+  `Agregar` (POST agrega a la lista y redirige) y `Eliminar` (quita de la lista).
+- **`EscenarioController`** — `Index` (lista completa) y `Detalle` (caso
+  existente e inexistente/`NotFound`).
+- **`CombateController`** — `Arena` (arma la pelea con datos válidos o
+  redirige a `Seleccion` si algún Id no existe) y `GuardarResultado` (agrega
+  un registro al historial y redirige a `Historial`).
+
+Se priorizaron estos tres controladores porque concentran toda la lógica
+condicional del sistema (búsquedas por Id, altas, bajas, validación de
+existencia) y porque las acciones se pueden invocar directamente sin necesitar
+un `HttpContext` real: `View()`, `RedirectToAction()` y `NotFound()` no
+dependen de una petición HTTP en curso, lo que permite probarlas de forma
+aislada y rápida.
+
+No se probaron `HomeController` ni `JugadorController` porque no tienen
+lógica condicional (solo regresan una vista o una lista fija).
+
+### Nota sobre el estado estático compartido
+
+Como las listas (`_personajes`, `_escenarios`, `_historial`) son `static`,
+persisten entre pruebas dentro de la misma clase de pruebas. Para no depender
+del orden de ejecución, las pruebas que agregan datos usan nombres/valores
+únicos (por ejemplo `"Personaje_Prueba_Agregar"` o
+`"Ganador_Prueba_Unica_123"`) y verifican con `Assert.Contains`/`Assert.DoesNotContain`
+en vez de comparar el tamaño total de la lista.
+
+### Integración Continua
+
+Se agregó `.github/workflows/ci.yml`: en cada `push` y `pull_request` se
+ejecuta `dotnet restore` → `dotnet build` → `dotnet test` sobre
+`Multiverse-Rumble.slnx`. El resultado se ve como check ✅/❌ en cada Pull
+Request, reemplazando la verificación manual por una automática.
+
+## Consecuencias
+
+**Positivas**
+
+- Cualquier cambio a la lógica de los controladores que rompa un caso ya
+  cubierto (por ejemplo, dejar de regresar `NotFound`) se detecta en segundos
+  en cada push, sin depender de que alguien lo pruebe a mano.
+- El historial de Actions/commits documenta la evolución del proyecto:
+  pruebas agregadas, pipeline configurado.
+
+**Costos / trade-offs**
+
+- Las pruebas dependen del estado estático compartido entre acciones del
+  mismo controlador; si en el futuro se reemplazan las listas estáticas por
+  una base de datos real (pagando la deuda técnica de ADR-01/ADR-02), estas
+  pruebas van a necesitar actualizarse para usar un repositorio/DbContext de
+  prueba en lugar de listas en memoria.
+- Por ahora solo se cubre la capa de Controllers; no hay pruebas sobre
+  `Multiverse-Rumble-API` (proyecto de la API REST) ni sobre la lógica de
+  combate en JavaScript/Canvas del lado del cliente.
