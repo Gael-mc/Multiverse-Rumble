@@ -19,7 +19,7 @@ namespace Multiverse_Rumble.Tests.Controllers
             // Assert
             var viewResult = Assert.IsType<ViewResult>(resultado);
             var personaje = Assert.IsType<Personaje>(viewResult.Model);
-            Assert.Equal("Alguien que no existe", personaje.Nombre);
+            Assert.Equal("Goku", personaje.Nombre);
         }
 
         [Fact]
