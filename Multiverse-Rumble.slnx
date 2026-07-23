@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Multiverse-Rumble/Multiverse-Rumble.csproj" />
+  <Project Path="Multiverse-Rumble.Tests/Multiverse-Rumble.Tests.csproj" />
 </Solution>
