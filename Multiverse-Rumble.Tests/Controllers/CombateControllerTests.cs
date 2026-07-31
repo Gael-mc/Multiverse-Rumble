@@ -23,7 +23,7 @@ namespace Multiverse_Rumble.Tests.Controllers
             var escenario = Assert.IsType<Escenario>(viewResult.ViewData["Escenario"]);
 
             Assert.Equal("Goku", personaje1.Nombre);
-            Assert.Equal("Superman", personaje2.Nombre);
+            Assert.Equal("Naruto", personaje2.Nombre);
             Assert.Equal("Namek", escenario.Nombre);
         }
 

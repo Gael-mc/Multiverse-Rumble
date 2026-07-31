@@ -1,0 +1,75 @@
+@using MultiverseRumble.Models
+@{
+    ViewData["Title"] = "Elige tu combate";
+    var personajes = ViewBag.Personajes as List<Personaje> ?? new List<Personaje>();
+    var escenarios = ViewBag.Escenarios as List<Escenario> ?? new List<Escenario>();
+}
+
+<h1 class="mb-4">Elige tu combate</h1>
+
+<form asp-controller="Combate" asp-action="Arena" method="get" id="form-seleccion">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Jugador 1 <small class="text-muted">(WASD + F)</small></h4>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                @foreach (var p in personajes)
+                {
+                    <label class="personaje-card">
+                        <input type="radio" name="p1Id" value="@p.Id" required />
+                        <img class="sprite-thumb" src="@p.SpriteIdleUrl" alt="@p.Nombre"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+                        <span class="swatch" style="background:@p.ColorPrincipal; display:none;"></span>
+                        <span>@p.Nombre</span>
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Jugador 2 <small class="text-muted">(Flechas + L)</small></h4>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                @foreach (var p in personajes)
+                {
+                    <label class="personaje-card">
+                        <input type="radio" name="p2Id" value="@p.Id" required />
+                        <img class="sprite-thumb" src="@p.SpriteIdleUrl" alt="@p.Nombre"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+                        <span class="swatch" style="background:@p.ColorPrincipal; display:none;"></span>
+                        <span>@p.Nombre</span>
+                    </label>
+                }
+            </div>
+        </div>
+    </div>
+
+    <h4>Escenario</h4>
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        @foreach (var e in escenarios)
+        {
+            <label class="personaje-card">
+                <input type="radio" name="escenarioId" value="@e.Id" required />
+                <span>@e.Nombre</span>
+            </label>
+        }
+    </div>
+
+    <p id="aviso-mismo-personaje" class="text-danger d-none">⚠ Elige un personaje distinto para cada jugador.</p>
+
+    <button type="submit" class="btn btn-danger btn-lg">▶ ¡Pelear!</button>
+</form>
+
+@section Scripts {
+    <script>
+        // Evita que ambos jugadores elijan el mismo personaje.
+        document.getElementById('form-seleccion').addEventListener('submit', function (e) {
+            var p1 = document.querySelector('input[name="p1Id"]:checked');
+            var p2 = document.querySelector('input[name="p2Id"]:checked');
+            var aviso = document.getElementById('aviso-mismo-personaje');
+            if (p1 && p2 && p1.value === p2.value) {
+                e.preventDefault();
+                aviso.classList.remove('d-none');
+            } else {
+                aviso.classList.add('d-none');
+            }
+        });
+    </script>
+}

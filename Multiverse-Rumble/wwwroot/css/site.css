@@ -29,3 +29,221 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* =========================================================
+   MULTIVERSE RUMBLE — TEMA ARCADE
+   ========================================================= */
+
+:root {
+  --mr-bg: #0b0014;
+  --mr-bg-alt: #1a0b2e;
+  --mr-panel: #1f0f3d;
+  --mr-panel-light: #2a1550;
+  --mr-border: #4a2a7a;
+  --mr-neon-pink: #ff2e93;
+  --mr-neon-cyan: #00e5ff;
+  --mr-neon-yellow: #ffe600;
+  --mr-neon-green: #39ff14;
+  --mr-text: #f1e9ff;
+  --mr-text-dim: #b7a6da;
+  --mr-font-arcade: "Press Start 2P", cursive;
+}
+
+html, body {
+  background: radial-gradient(circle at 50% -10%, #2c1252 0%, var(--mr-bg) 65%);
+  color: var(--mr-text);
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Ligero efecto de scanlines estilo CRT, sin bloquear clics */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2000;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 2px, transparent 4px);
+  mix-blend-mode: overlay;
+}
+
+.container, main {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: var(--mr-neon-cyan);
+}
+a:hover {
+  color: var(--mr-neon-pink);
+}
+
+/* ---- Navbar ---- */
+.mr-navbar {
+  background: linear-gradient(90deg, #170a2c, #2a0f4d) !important;
+  border-bottom: 3px solid var(--mr-neon-cyan);
+  box-shadow: 0 0 22px rgba(0, 229, 255, 0.35);
+}
+
+.mr-brand {
+  font-family: var(--mr-font-arcade);
+  font-size: 0.85rem;
+  color: var(--mr-neon-yellow) !important;
+  text-shadow: 0 0 8px rgba(255, 230, 0, 0.7);
+  letter-spacing: 1px;
+}
+
+.mr-navbar .nav-link {
+  font-family: var(--mr-font-arcade);
+  font-size: 0.7rem;
+  color: var(--mr-text) !important;
+  padding: 10px 14px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color .15s ease, text-shadow .15s ease;
+}
+.mr-navbar .nav-link:hover {
+  color: var(--mr-neon-cyan) !important;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+/* ---- Titulos ---- */
+h1, h2, h3 {
+  font-family: var(--mr-font-arcade);
+  color: var(--mr-neon-yellow);
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.55), 0 0 22px rgba(255, 46, 147, 0.25);
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+h4, h5, h6 {
+  color: var(--mr-neon-cyan);
+  text-shadow: 0 0 6px rgba(0, 229, 255, 0.4);
+}
+
+/* ---- Botones estilo arcade ---- */
+.btn {
+  font-family: var(--mr-font-arcade);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  transition: transform .1s ease, box-shadow .15s ease;
+}
+
+.btn-danger {
+  background: linear-gradient(180deg, #ff4fa8, #c2005c);
+  box-shadow: 0 4px 0 #6e0033, 0 0 16px rgba(255, 46, 147, 0.55);
+}
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #6e0033, 0 0 26px rgba(255, 46, 147, 0.85);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #35e5ff, #0089a3);
+  color: #001018;
+  box-shadow: 0 4px 0 #005566, 0 0 16px rgba(0, 229, 255, 0.55);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #005566, 0 0 26px rgba(0, 229, 255, 0.85);
+}
+
+.btn-secondary {
+  background: linear-gradient(180deg, #6b6b7a, #34303f);
+  box-shadow: 0 4px 0 #17151d, 0 0 12px rgba(255, 255, 255, 0.2);
+}
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ---- Tarjetas de selección de personaje / escenario ---- */
+.personaje-card {
+  background: var(--mr-panel);
+  border: 2px solid var(--mr-border);
+  color: var(--mr-text);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.personaje-card:hover {
+  border-color: var(--mr-neon-cyan);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.45);
+}
+.personaje-card:has(input:checked) {
+  border-color: var(--mr-neon-yellow);
+  background: var(--mr-panel-light);
+  box-shadow: 0 0 18px rgba(255, 230, 0, 0.6);
+}
+.personaje-card input {
+  accent-color: var(--mr-neon-pink);
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.sprite-thumb {
+  width: 40px;
+  height: 56px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--mr-border);
+  border-radius: 6px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+/* ---- Tablas (historial) ---- */
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--mr-text);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-striped-color: var(--mr-text);
+  --bs-table-border-color: var(--mr-border);
+}
+.table thead {
+  font-family: var(--mr-font-arcade);
+  font-size: 0.65rem;
+  color: var(--mr-neon-cyan);
+  text-transform: uppercase;
+}
+
+/* ---- Panel genérico ---- */
+.mr-panel {
+  background: var(--mr-panel);
+  border: 2px solid var(--mr-border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 24px rgba(255, 46, 147, 0.15);
+}
+
+/* ---- Footer ---- */
+footer.footer {
+  background: var(--mr-bg);
+  color: var(--mr-text-dim) !important;
+  border-top: 2px solid var(--mr-neon-pink) !important;
+}
+footer.footer a {
+  color: var(--mr-neon-cyan);
+}
