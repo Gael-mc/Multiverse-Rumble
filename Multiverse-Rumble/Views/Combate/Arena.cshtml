@@ -1,0 +1,148 @@
+@using MultiverseRumble.Models
+@{
+    ViewData["Title"] = "Combate";
+    var p1 = ViewBag.Personaje1 as Personaje;
+    var p2 = ViewBag.Personaje2 as Personaje;
+    var escenario = ViewBag.Escenario as Escenario;
+    var esValido = p1 != null && p2 != null && escenario != null;
+}
+
+@if (!esValido)
+{
+    <p class="text-danger">No se pudo cargar el combate.</p>
+}
+else
+{
+    <div class="arena-wrapper">
+        <h2 class="text-center mb-2">@p1.Nombre vs @p2.Nombre <small class="text-muted">&mdash; @escenario.Nombre</small></h2>
+
+        <div class="canvas-container">
+            <canvas id="arena-canvas" width="800" height="400"></canvas>
+
+            <div id="resultado-overlay" class="resultado-overlay d-none">
+                <div class="resultado-caja">
+                    <p id="resultado-texto"></p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button type="button" class="btn btn-secondary" onclick="location.reload()">Revancha</button>
+                        <button type="submit" form="form-resultado" class="btn btn-danger">Guardar y ver historial</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controles-legend row mt-3">
+            <div class="col-md-6">
+                <strong>Jugador 1 (@p1.Nombre):</strong> A/D mover &middot; W saltar &middot; F atacar
+            </div>
+            <div class="col-md-6 text-md-end">
+                <strong>Jugador 2 (@p2.Nombre):</strong> &larr;&rarr; mover &middot; &uarr; saltar &middot; L atacar
+            </div>
+        </div>
+
+        <form id="form-resultado" asp-controller="Combate" asp-action="GuardarResultado" method="post">
+            <input type="hidden" name="ganador" id="input-ganador" />
+            <input type="hidden" name="p1Id" value="@p1.Id" />
+            <input type="hidden" name="p2Id" value="@p2.Id" />
+            <input type="hidden" name="escenarioId" value="@escenario.Id" />
+        </form>
+    </div>
+
+    <script>
+        window.BATTLE_DATA = {
+            p1: {
+                id: @p1.Id,
+                nombre: "@p1.Nombre",
+                colorPrincipal: "@p1.ColorPrincipal",
+                colorSecundario: "@p1.ColorSecundario",
+                spriteIdle: "@p1.SpriteIdleUrl",
+                spriteAtaque: "@p1.SpriteAtaqueUrl",
+                spriteSalto: "@p1.SpriteSaltoUrl",
+                spriteCaminar: "@p1.SpriteCaminarUrl",
+                vida: @p1.Vida,
+                ataque: @p1.Ataque,
+                defensa: @p1.Defensa
+            },
+            p2: {
+                id: @p2.Id,
+                nombre: "@p2.Nombre",
+                colorPrincipal: "@p2.ColorPrincipal",
+                colorSecundario: "@p2.ColorSecundario",
+                spriteIdle: "@p2.SpriteIdleUrl",
+                spriteAtaque: "@p2.SpriteAtaqueUrl",
+                spriteSalto: "@p2.SpriteSaltoUrl",
+                spriteCaminar: "@p2.SpriteCaminarUrl",
+                vida: @p2.Vida,
+                ataque: @p2.Ataque,
+                defensa: @p2.Defensa
+            },
+            escenario: {
+                nombre: "@escenario.Nombre",
+                universo: "@escenario.Universo",
+                imagenFondo: "@escenario.ImagenFondoUrl"
+            }
+        };
+    </script>
+
+    <style>
+        .canvas-container {
+            position: relative;
+            width: 800px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        #arena-canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+            border: 3px solid #222;
+            border-radius: 6px;
+            image-rendering: pixelated;
+        }
+
+        .resultado-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(5,0,15,.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .resultado-caja {
+            background: var(--mr-panel);
+            border: 2px solid var(--mr-neon-yellow);
+            box-shadow: 0 0 30px rgba(255,230,0,.5);
+            padding: 24px 32px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+            .resultado-caja p {
+                font-family: var(--mr-font-arcade);
+                font-size: 1rem;
+                color: var(--mr-neon-yellow);
+                text-shadow: 0 0 10px rgba(255,230,0,.6);
+                margin-bottom: 20px;
+                line-height: 1.8;
+            }
+
+        .controles-legend {
+            font-size: .85rem;
+            color: var(--mr-text-dim);
+        }
+
+        .controles-legend strong {
+            color: var(--mr-neon-cyan);
+        }
+    </style>
+}
+
+@section Scripts {
+    @if (esValido)
+    {
+        <script src="~/js/combate.js" asp-append-version="true"></script>
+    }
+}

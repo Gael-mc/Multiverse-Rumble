@@ -1,8 +1,96 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Multiverse Rumble";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="mr-hero text-center">
+    <p class="mr-insert-coin">Insert Coin ▸ Press Start</p>
+    <h1 class="mr-title">MULTIVERSE<br />RUMBLE</h1>
+    <p class="mr-subtitle">Peleas 1v1 entre universos. Elige tu luchador y demuestra quién manda.</p>
+
+    <div class="d-flex gap-3 justify-content-center flex-wrap my-4">
+        <a class="btn btn-danger btn-lg" asp-controller="Combate" asp-action="Seleccion">▶ Jugar</a>
+        <a class="btn btn-secondary btn-lg" asp-controller="Combate" asp-action="Historial">Historial</a>
+    </div>
+
+    <div class="mr-roster d-flex justify-content-center flex-wrap gap-3 mt-5">
+        <div class="mr-roster-card">
+            <span class="mr-roster-swatch" style="background:#ff8a00"></span>
+            <span>Goku</span>
+        </div>
+        <div class="mr-roster-card">
+            <span class="mr-roster-swatch" style="background:#ff7a00"></span>
+            <span>Naruto</span>
+        </div>
+        <div class="mr-roster-card">
+            <span class="mr-roster-swatch" style="background:#d62828"></span>
+            <span>Luffy</span>
+        </div>
+        <div class="mr-roster-card">
+            <span class="mr-roster-swatch" style="background:#8b5a2b"></span>
+            <span>Scooby-Doo</span>
+        </div>
+        <div class="mr-roster-card">
+            <span class="mr-roster-swatch" style="background:#2166c4"></span>
+            <span>Superman</span>
+        </div>
+    </div>
 </div>
+
+<style>
+    .mr-hero {
+        padding: 40px 10px 20px;
+    }
+
+    .mr-insert-coin {
+        font-family: var(--mr-font-arcade);
+        font-size: .7rem;
+        color: var(--mr-neon-green);
+        text-shadow: 0 0 8px rgba(57,255,20,.7);
+        animation: mr-blink 1.4s steps(1) infinite;
+    }
+
+    @@keyframes mr-blink {
+        50% { opacity: 0; }
+    }
+
+    .mr-title {
+        font-family: var(--mr-font-arcade);
+        font-size: clamp(1.8rem, 6vw, 3.2rem);
+        line-height: 1.4;
+        color: var(--mr-neon-yellow);
+        text-shadow: 0 0 12px rgba(255,230,0,.7), 0 0 30px rgba(255,46,147,.4);
+        margin: 10px 0 18px;
+    }
+
+    .mr-subtitle {
+        color: var(--mr-text-dim);
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    .mr-roster-card {
+        background: var(--mr-panel);
+        border: 2px solid var(--mr-border);
+        border-radius: 10px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--mr-font-arcade);
+        font-size: .65rem;
+        transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .mr-roster-card:hover {
+        border-color: var(--mr-neon-cyan);
+        box-shadow: 0 0 14px rgba(0,229,255,.45);
+    }
+
+    .mr-roster-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        display: inline-block;
+        border: 1px solid rgba(255,255,255,.4);
+    }
+</style>

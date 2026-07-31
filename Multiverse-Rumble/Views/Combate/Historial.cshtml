@@ -1,0 +1,45 @@
+@using MultiverseRumble.Models
+@model List<Combate>
+@{
+    ViewData["Title"] = "Historial de combates";
+    var lista = Model ?? new List<Combate>();
+}
+
+<h1 class="mb-4">Historial de combates</h1>
+
+<div class="mr-panel mb-4">
+    @if (!lista.Any())
+    {
+        <p class="mb-0">Todavía no hay combates registrados.</p>
+    }
+    else
+    {
+        <table class="table table-striped align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Jugador 1</th>
+                    <th>Jugador 2</th>
+                    <th>Escenario</th>
+                    <th>Ganador</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in lista.OrderByDescending(c => c.Fecha))
+                {
+                    <tr>
+                        <td>@c.Id</td>
+                        <td>Personaje #@c.Jugador1Id</td>
+                        <td>Personaje #@c.Jugador2Id</td>
+                        <td>Escenario #@c.EscenarioId</td>
+                        <td><strong class="text-warning">@c.Ganador</strong></td>
+                        <td>@c.Fecha.ToString("g")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<a class="btn btn-primary" asp-controller="Combate" asp-action="Seleccion">▶ Jugar de nuevo</a>
