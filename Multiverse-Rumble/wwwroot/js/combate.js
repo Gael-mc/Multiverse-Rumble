@@ -53,6 +53,77 @@
         return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
     }
 
+    // ---- Sonido de ataque (sintetizado, sin archivos externos) ----
+    // Se genera con Web Audio API: un "golpe" de ruido filtrado + un tono
+    // descendente encima, estilo arcade retro. Si el navegador no soporta
+    // Web Audio API (o el audio falla por cualquier razón), el juego sigue
+    // funcionando en silencio sin lanzar errores.
+    var AudioCtor = window.AudioContext || window.webkitAudioContext;
+    var audioCtx = null;
+
+    function getAudioCtx() {
+        if (!AudioCtor) return null;
+        if (!audioCtx) {
+            try { audioCtx = new AudioCtor(); } catch (e) { audioCtx = null; }
+        }
+        // Los navegadores suspenden el AudioContext hasta el primer gesto del
+        // usuario; como esto se llama desde una tecla de ataque, ya hay gesto.
+        if (audioCtx && audioCtx.state === 'suspended' && audioCtx.resume) {
+            audioCtx.resume().catch(function () {});
+        }
+        return audioCtx;
+    }
+
+    function playAttackSound() {
+        var ctxA = getAudioCtx();
+        if (!ctxA) return;
+        try {
+            var now = ctxA.currentTime;
+
+            // Golpe de ruido (impacto "seco")
+            var bufferSize = Math.floor(ctxA.sampleRate * 0.12);
+            var noiseBuffer = ctxA.createBuffer(1, bufferSize, ctxA.sampleRate);
+            var data = noiseBuffer.getChannelData(0);
+            for (var i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+            }
+            var noise = ctxA.createBufferSource();
+            noise.buffer = noiseBuffer;
+
+            var noiseFilter = ctxA.createBiquadFilter();
+            noiseFilter.type = 'lowpass';
+            noiseFilter.frequency.setValueAtTime(1800, now);
+            noiseFilter.frequency.exponentialRampToValueAtTime(200, now + 0.1);
+
+            var noiseGain = ctxA.createGain();
+            noiseGain.gain.setValueAtTime(0.35, now);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+            noise.connect(noiseFilter);
+            noiseFilter.connect(noiseGain);
+            noiseGain.connect(ctxA.destination);
+            noise.start(now);
+            noise.stop(now + 0.12);
+
+            // Tono descendente encima, estilo "arcade punch"
+            var osc = ctxA.createOscillator();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(220, now);
+            osc.frequency.exponentialRampToValueAtTime(70, now + 0.09);
+
+            var oscGain = ctxA.createGain();
+            oscGain.gain.setValueAtTime(0.18, now);
+            oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+
+            osc.connect(oscGain);
+            oscGain.connect(ctxA.destination);
+            osc.start(now);
+            osc.stop(now + 0.1);
+        } catch (e) {
+            // Falla de audio: no debe interrumpir el combate.
+        }
+    }
+
     // ---- Peleador ----
     function Fighter(cfg, controls, startX, facing) {
         this.nombre = cfg.nombre;
@@ -110,6 +181,7 @@
         this.attacking = true;
         this.attackTimer = 0;
         this.hasHitThisAttack = false;
+        playAttackSound();
     };
 
     Fighter.prototype.takeDamage = function (dmg) {
