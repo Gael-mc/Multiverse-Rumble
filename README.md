@@ -55,9 +55,11 @@ sueltos) y no puede ejecutar un servidor ASP.NET Core con Controllers, Razor Vie
 en el servidor ni el endpoint `POST /Combate/GuardarResultado`. Para una demo con link público
 real hace falta un hosting que corra .NET, por ejemplo (ambos tienen plan gratuito):
 
-- **Render.com** — Web Service nuevo → conectar el repo de GitHub → Runtime "Docker" o
-  "Native" con `dotnet publish`, Build Command `dotnet publish Multiverse-Rumble/Multiverse-Rumble.csproj -c Release -o out`,
-  Start Command `dotnet out/Multiverse-Rumble.dll`.
+- **Render.com** — solo despliega .NET vía Docker (no tiene buildpack nativo). El repo ya
+  incluye [`Dockerfile`](Dockerfile) listo para esto: Web Service nuevo → conectar el repo de
+  GitHub → Runtime "Docker" (Render detecta el `Dockerfile` solo) → Free plan. No hace falta
+  configurar Build/Start Command, ya están en el Dockerfile. `Program.cs` ya lee la variable
+  `PORT` que Render inyecta automáticamente.
 - **Azure App Service** (plan gratuito F1, suele venir incluido con el GitHub Student
   Developer Pack) — `az webapp up` o publicar directo desde Visual Studio.
 
