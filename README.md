@@ -17,11 +17,11 @@ más abajo)_.
 
 | | |
 |---|---|
-| ![Pantalla de inicio](Multiverse-Rumble/docs/screenshots/home.png) | ![Selección de personajes y escenario](Multiverse-Rumble/docs/screenshots/seleccion.png) |
+| ![Pantalla de inicio](https://github.com/user-attachments/assets/c6a335bd-d253-486e-944a-b09b68b4981c) | ![Selección de personajes y escenario](https://github.com/user-attachments/assets/21d8c397-81b9-43be-8511-0106f2f95595) |
 | Pantalla de inicio | Selección de personajes y escenario |
-| ![Combate en Namek: Scooby-Doo vs Superman](Multiverse-Rumble/docs/screenshots/arena-namek.png) | ![Combate en Gotham City: Naruto vs Goku](Multiverse-Rumble/docs/screenshots/arena-gotham.png) |
+| ![Combate en Namek: Scooby-Doo vs Superman](https://github.com/user-attachments/assets/b42ff4c3-6a34-4597-94e0-33b4bc286e7c) | ![Combate en Gotham City: Naruto vs Goku](https://github.com/user-attachments/assets/1d5eb6fe-211b-46ab-9113-db63d63e827d) |
 | Combate en Namek — Scooby-Doo vs Superman | Combate en Gotham City — Naruto vs Goku |
-| ![Combate en CDMX: Luffy vs Naruto](Multiverse-Rumble/docs/screenshots/arena-cdmx.png) | ![Historial de combates](Multiverse-Rumble/docs/screenshots/historial.png) |
+| ![Combate en CDMX: Luffy vs Naruto](https://github.com/user-attachments/assets/72b599d0-ce09-440c-a840-b524de7739b1) | ![Historial de combates](https://github.com/user-attachments/assets/b4480d3f-d394-4c75-b3a0-4655cb6626a7) |
 | Combate en CDMX — Luffy vs Naruto | Historial de combates |
 
 ## Cómo correr el proyecto en local
