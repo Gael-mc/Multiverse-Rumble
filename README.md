@@ -13,6 +13,17 @@ más abajo)_.
 
 ---
 
+## Capturas de pantalla
+
+| | |
+|---|---|
+| ![Pantalla de inicio](Multiverse-Rumble/docs/screenshots/home.png) | ![Selección de personajes y escenario](Multiverse-Rumble/docs/screenshots/seleccion.png) |
+| Pantalla de inicio | Selección de personajes y escenario |
+| ![Combate en Namek: Scooby-Doo vs Superman](Multiverse-Rumble/docs/screenshots/arena-namek.png) | ![Combate en Gotham City: Naruto vs Goku](Multiverse-Rumble/docs/screenshots/arena-gotham.png) |
+| Combate en Namek — Scooby-Doo vs Superman | Combate en Gotham City — Naruto vs Goku |
+| ![Combate en CDMX: Luffy vs Naruto](Multiverse-Rumble/docs/screenshots/arena-cdmx.png) | ![Historial de combates](Multiverse-Rumble/docs/screenshots/historial.png) |
+| Combate en CDMX — Luffy vs Naruto | Historial de combates |
+
 ## Cómo correr el proyecto en local
 
 Requisitos: [.NET SDK 10.0](https://dotnet.microsoft.com/download).
