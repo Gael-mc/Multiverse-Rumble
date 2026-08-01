@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,11 +20,16 @@ var app = builder.Build();
 // Detras de un proxy (Render, etc.) la conexion real del navegador es HTTPS,
 // pero el proxy le habla a la app por HTTP. Sin esto, UseHttpsRedirection()
 // puede terminar en un bucle de redirecciones.
-app.UseForwardedHeaders(new Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersOptions
+// KnownNetworks/KnownProxies se limpian porque la IP del proxy de Render no es
+// fija ni se puede listar de antemano (a partir de .NET 8.0.17/9.0.6 el
+// middleware ignora los headers de proxies "desconocidos" por defecto).
+var forwardedHeadersOptions = new ForwardedHeadersOptions
 {
-    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor
-        | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
-});
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+};
+forwardedHeadersOptions.KnownIPNetworks.Clear();
+forwardedHeadersOptions.KnownProxies.Clear();
+app.UseForwardedHeaders(forwardedHeadersOptions);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
